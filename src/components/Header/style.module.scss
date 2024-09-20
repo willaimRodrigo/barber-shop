@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 20vh;
+
+    background-color: rgb(222, 220, 216);
+
+    h1 {
+        font-size: 2.25rem;
+        font-weight: 500;
+        line-height: 2.25rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.75rem;
+    }
+}

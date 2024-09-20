@@ -1,0 +1,96 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(183, 248, 226);
+
+    p {
+        text-align: center;
+    }
+
+    h5 {
+        text-align: center;
+        color: rgb(7, 76, 76);
+    }
+
+    h3 {
+        display: flex;
+        align-items: center;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        width: 90%;
+        height: 20vh;
+
+        @media (max-width: 768px) {
+            overflow-x: scroll;
+            gap: 30px;
+            height: 15vh;
+        }
+
+    }
+
+    li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 5rem;
+        width: 8rem;
+        min-height: 5rem;
+        border: rgb(78, 146, 78) 1px solid;
+        border-radius: .475rem;
+        color: rgb(20, 23, 26);
+        background-color: rgb(165, 170, 173);
+
+        box-shadow: 8px 5px rgb(74, 74, 74);
+
+        &:hover {
+            border: 2px solid rgb(8, 250, 8);
+            box-shadow: 8px 5px rgb(21, 21, 21);
+        }
+        
+    }
+
+    .discount {
+        margin: 20px;
+        width: 85%;
+        border: solid black 1px;
+        border-radius: 5px;
+
+        h4 {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1rem;
+            color: rgb(94, 54, 5);
+        }
+    }
+
+    .prices {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        margin-bottom: 1rem;
+
+        h4 {
+            color: rgb(18, 33, 46);
+            font-weight: 500;
+            font-size: 24px;
+        }
+
+        h6 {
+            color: rgb(105, 15, 15);
+        }
+    }
+
+        
+}
