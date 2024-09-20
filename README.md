@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Bem vindos ao BarberShop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Visite a página: [BaberShop](https://willaimrodrigo.github.io/barber-shop/).
 
-## Available Scripts
+## Sobre o projeto
 
-In the project directory, you can run:
+Uma página simples, com um Header de bem vindos e o nome da aplicação.
 
-### `npm start`
+Na parte principal temos 3 seções. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A primeira com cards de cortes de cabelos, com o número do corte referente, nome/tipo do corte e valor. 
+O card tem a função hover, que se destaca quando passamos o mouse por cima e/ou quando selecionado. Além de ter a função de botão, ao ser clicado, ele armazena os valores do tipo de corte e valor na seção 3, mostrando o corte e valor selecionado. O mesmo card se clicado mais uma vez, remove a opção selecionada, removendo os valores adiocionados a seção 3.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Na segunda seção temos cards de cortes de barbas, com o número referente ao corte, nome/tipo do corte e valor.
+O card tem a função hover, que se destaca quando passamos o mouse por cima e/ou quando selecionado. Além de ter a função de botão, ao ser clicado, ele armazena os valores do tipo de corte de barba e valor na seção 3, mostrando o corte e valor selecionado. O mesmo card se clicado mais uma vez, remove a opção selecionada, removendo os valores adiocionados a seção 3.
 
-### `npm test`
+Na terceira seção temos um pequeno comunicado sobre descontos na promoção e logo a baixo temos a seção de valores, onde há a referência sobre o corte de cabelo, sobre o corte da barba e o valor total.
+Aqui só temos a função de visualização, onde os valores dos cards clicados são armazendos e exibidos. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Há o detalhe de que duas opções, barba e cabelo selecionados acionam o desconto de 20%, subtraindo o valor do valor total e já exibindo com desconto incluso.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+No fim temos um Footer apenas com a mensagem "Volte sempre!".
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### `Código`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Usei Html, Scss (module), Javascript e React.
+Usei DOM, componentes.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `Javascript`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Há 3 componentes Header, Page, Footer. 
+HEader e Footer foram incorpados no arquivo App.js, usando a funcionalidade do React de single page. Também rececebendo o Page, onde há as funcionalidades e funções da aplicação como:
 
-## Learn More
+`Array`: recebe o array TabelaDeCortes com dois obejtos dentro `barba` e `corte`, cada um composto objetos de Id, Tipo e Valor.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`useState`: constantes armazando os valores para manipulação das barbas e cortes, como `setCorteSelect` ,`steBArbaSelect` e `setTotal`, para manipulação nas funções.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`addItem`: A função manipula os array e adiociona os valores quando o clique for acionado. Essa função vem com 3 parametros, `tipo`, `valor` e `categoria`. Dentro dessa função temos duas sessões de condicionais, ambas com as mesmas funções, verifica se a categoria é igual ao corte ou barba (puxando de um ou outro objeto) e aciona a condicional. A primeira verificação identifica se já há item selecionado, se sim, ele subtrai o valor existente e volta para null, a segunda condicional verifica se está null, se estiver, adiona o item e soma o valor ao valor anterior com o setCorteSelect/setBarbaSelect(tipo, valor), (que vem null default).
 
-### Code Splitting
+`useEffect`: Temos o useEffect apenas para trabalhar o desconto, ele chama a condicional, verificando se o setCorteSelect e o setBarbaSelect são diferentes de null, se sim, armazana o valor em uma constante e abaixo aplica o setTotal com a constante - o desconto, exibindo o total.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`Html`: no index do Page temos a `ul` que usa o Dom para renderizar a `li` com o `map` e na mesma há uma função  onClick chamando a função ###addItem com parametros para executar corretamente a função.
 
-### Analyzing the Bundle Size
+Na parte final de prices temos uma sessão com h3 e p apenas renderizando os nomes `Orçamentos`, `Barba`, `Cabelo` e `Total`. Onde usamos o templete literals para renderizar os valores dos elementos e a soma ou subtração do total.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+###`Styles`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Usei Styles module para trabalhar o estilo de cada componente separado, além de haver uma pasta chamada Styles com arquivos genéricos de scss, como reset e global para agrupar tudo em um lugar e não deixar o código solto ou poluído.
