@@ -1,11 +1,35 @@
-.footer {
-    background-color: rgb(222, 220, 216);
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    .p {
+    height: 15vh;
+    background-color: rgb(216, 241, 233);
+
+    h2 {
+        font-weight: 700;
+        font-size: 20px;
+        margin: 10px;
+    }
+
+    .boxform {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 15vh;
+        width: 50%;
+        height: 70%;
+        border: solid 1px rgb(78, 77, 77);
+        border-radius: 10px;
+
+        box-shadow: 6px 6px rgb(124, 124, 124);
+
+        @media (max-width: 850px) {
+            width: 80%;
+            height: 80%;
+        }
+
     }
 }
 

@@ -1,0 +1,14 @@
+.ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 90%;
+    height: 20vh;
+    gap: 30px;
+
+    @media (max-width: 850px) {
+        overflow-x: scroll;
+        height: 30vh;
+    }
+}

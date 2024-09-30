@@ -1,43 +1,30 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import styles from "./style.module.scss";
+import { ListCortes } from "../ListCortes";
+import { TabelaCortes } from "../TabelaCortes";
+import { Prices } from "../Prices";
+
 
 export const Page = () => {
 
     const [barbaSelect, setBarbaSelect] =  useState(null);
-    const [corteSelect, setCorteSelet] = useState(null);
+    const [cabeloSelect, setCabeloSelect] = useState(null);
     const [total, setTotal] = useState(0);
 
-    const TabelaDeCortes = {
-        cortes: [
-            { id: 1, tipo: "Militar", valor: 40 },
-            { id: 2, tipo: "Samurai", valor: 50 },
-            { id: 3, tipo: "Pompour", valor: 45 },
-            { id: 4, tipo: "Moicano", valor: 35 },
-            { id: 5, tipo: "Razor part", valor: 25 },
-        ],
-
-        barbas: [
-            { id: 6, tipo: "Capitão Jack", valor: 50 },
-            { id: 7, tipo: "Van Dyke", valor: 40 },
-            { id: 8, tipo: "Barba Média", valor: 50 },
-            { id: 9, tipo: "Barba Baixa", valor: 40 },
-            { id: 10, tipo: "Barba Zero", valor: 35 },
-        ],
-        estAberto: true,
-    };
-
+    // addItem pega o tipo e valor e faz o calculo com o CSSMathProduct, se estiver vazio, subtrai o valor, se houver algo, ele substitui o valor atual e aplica ao valor total
     const addItem = (tipo, valor, categoria) => {
         
-        if (categoria === "corte") {
+        if (categoria === "cabelo") {
 
-            if (corteSelect && corteSelect.tipo === tipo){
-                setTotal(prevTotal => prevTotal - corteSelect.valor);
+            if (cabeloSelect && cabeloSelect.tipo === tipo){
+                setTotal(prevTotal => prevTotal - cabeloSelect.valor);
                 setBarbaSelect(null);
             } else {
-                if (corteSelect !== null) {
-                    setTotal(prevTotal => prevTotal - corteSelect.valor);
+                if (cabeloSelect !== null) {
+                    setTotal(prevTotal => prevTotal - cabeloSelect.valor);
                 }
-                setCorteSelet({tipo, valor });
+                setCabeloSelect({tipo, valor });
                 setTotal(prevTotal => prevTotal + valor);
             }
         } else if (categoria === "barba") {
@@ -55,13 +42,13 @@ export const Page = () => {
                 
         }           
     };
-        
+    // useEffect faz a verificação se o corte há desconto e calccula o calculo respondendo com o valor atual corrigido
     useEffect(() => {
-            if(barbaSelect !== null && corteSelect !== null) {
-                const totalSemDesconto = barbaSelect.valor + corteSelect.valor;
+            if(barbaSelect !== null && cabeloSelect !== null) {
+                const totalSemDesconto = barbaSelect.valor + cabeloSelect.valor;
                 setTotal(totalSemDesconto * 0.8);
             }  
-        }, [barbaSelect, corteSelect]);
+        }, [barbaSelect, cabeloSelect]);
 
 
     return (
@@ -70,28 +57,15 @@ export const Page = () => {
             <section className={styles.section}>
 
                 <h3>Cortes de cabelos</h3>
-                <ul>
-                    {TabelaDeCortes.cortes.map(corte => (
-                        <li key={corte.id} onClick={() => addItem(corte.tipo, corte.valor, "corte")}>
-                            <p>{corte.id}</p>
-                            <h5>{corte.tipo}</h5>
-                            <p>${corte.valor}</p>
-                        </li>
-                    ))}
-                </ul> 
+
+                <ListCortes listCortes={TabelaCortes.cabelo} addItem={addItem} categoria="cabelo"/> 
             </section>
        
             <section className={styles.section}>
                 <h3>Cortes de barbas</h3>
-                <ul>
-                        {TabelaDeCortes.barbas.map(barba => (
-                            <li key={barba.id} onClick={() => addItem(barba.tipo, barba.valor, "barba")}>
-                                <p>{barba.id}</p>
-                                <h5>{barba.tipo}</h5>
-                                <p>${barba.valor}</p>
-                            </li>
-                        ))}
-                    </ul> 
+
+                <ListCortes listCortes={TabelaCortes.barbas} addItem={addItem} categoria="barba"/>
+            
             </section>
        
             <section className={styles.section}>
@@ -102,15 +76,13 @@ export const Page = () => {
                
             </section>
         
-            <section className={styles.section}>
-                <div className={styles.prices}>
+            {/* prices esta recebendo por children os valores e nome da propriedade e retornando, caso esteja vazio, exige uma mensagem string */}
+            <Prices>
                     <h4>Orçamento:</h4>
                     <p>Barba:{barbaSelect ? `${barbaSelect.tipo}` : "Nenhum selecionado"}</p>
-                    <p>Cabelo:{corteSelect ? `${corteSelect.tipo}` : "Nenhum selecionado"}</p>
-                    <h6>Total: ${total}</h6>
-                </div>
-                
-            </section>
+                    <p>Cabelo:{cabeloSelect ? `${cabeloSelect.tipo}` : "Nenhum selecionado"}</p>
+                    <h6>Total: ${total.toFixed(2)}</h6>   
+            </Prices>
        </>
     )
     

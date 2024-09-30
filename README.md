@@ -4,7 +4,7 @@ Visite a página: [BaberShop](https://willaimrodrigo.github.io/barber-shop/).
 
 ## Sobre o projeto
 
-Uma página simples, com um Header de bem vindos e o nome da aplicação.
+Uma página simples, com um Header com o logo e o nome da aplicação e um seja bem vindo.
 
 Na parte principal temos 3 seções. 
 
@@ -20,7 +20,7 @@ Aqui só temos a função de visualização, onde os valores dos cards clicados 
 Há o detalhe de que duas opções, barba e cabelo selecionados acionam o desconto de 20%, subtraindo o valor do valor total e já exibindo com desconto incluso.
 
 
-No fim temos um Footer apenas com a mensagem "Volte sempre!".
+No fim temos um Footer com um formulário com campos de nome e email e um botão de enviar.
 
 
 
@@ -32,10 +32,11 @@ Usei DOM, componentes.
 
 ### `Javascript`
 
-Há 3 componentes Header, Page, Footer. 
-HEader e Footer foram incorpados no arquivo App.js, usando a funcionalidade do React de single page. Também rececebendo o Page, onde há as funcionalidades e funções da aplicação como:
+Há 9 componentes Header, Page, Footer, Button, FormInput, ListCortes (contendo o componente do Card), Prices  e TabelaCortes. 
 
-`Array`: recebe o array TabelaDeCortes com dois obejtos dentro `barba` e `corte`, cada um composto objetos de Id, Tipo e Valor.
+HEader e Footer foram incorpados no arquivo App.js, usando a funcionalidade do React de single page. Também rececebendo o Page. O Page recebe componentes onde há as funcionalidades e funções da aplicação como:
+
+`Array`: recebe o array TabelaCortes com dois obejtos dentro `barba` e `corte`, cada um composto objetos de Id, Tipo e Valor, sendo um componente a parte.
 
 `useState`: constantes armazando os valores para manipulação das barbas e cortes, como `setCorteSelect` ,`steBArbaSelect` e `setTotal`, para manipulação nas funções.
 
@@ -43,11 +44,26 @@ HEader e Footer foram incorpados no arquivo App.js, usando a funcionalidade do R
 
 `useEffect`: Temos o useEffect apenas para trabalhar o desconto, ele chama a condicional, verificando se o setCorteSelect e o setBarbaSelect são diferentes de null, se sim, armazana o valor em uma constante e abaixo aplica o setTotal com a constante - o desconto, exibindo o total.
 
-`Html`: no index do Page temos a `ul` que usa o Dom para renderizar a `li` com o `map` e na mesma há uma função  onClick chamando a função ###addItem com parametros para executar corretamente a função.
+`Html`: no index do Page temos a `ul`, que  que usa o Dom para renderizar a `li` com o `map` e na mesma há uma função  onClick chamando a função ###addItem com parametros para executar corretamente a função.
 
 Na parte final de prices temos uma sessão com h3 e p apenas renderizando os nomes `Orçamentos`, `Barba`, `Cabelo` e `Total`. Onde usamos o templete literals para renderizar os valores dos elementos e a soma ou subtração do total.
 
+`button` é o componente que cria o botão "enviar" e renderiza recebendo por props as propriedades dele como: type submit.
+
+`footer` componente que abriga outro componente, o `formInput`, renderizando as propriedades passadas pelo usuário e sendo usado para nome e email.
+
+`forminput` componente que recbe por propriedade id, valor, type, placeholder,onchange. Sendo um componente generico de formulário que pode ser reutilizado.
+
+`ListCortes` componente responsável por receber a o array com os objetos de corte e renderizar todos usando o .map, criando cada card.
+
+`cardcortes` componente que recebe por props as propriedades img, additem, tipo e valor, sendo genérico e reutilizável.
+
+`prices` componente que usa o parametro children, para ser renderizado no page quando chamado e utilizando como filhos o que for passado dr=entro de seu escopo, reutilizavel 
+
+`page` componente principal, onde recebe os componentes de listcortes, prices, alem da section de promoção. No escopo, antes do retorno, foi criado a fnção additem, usando usestate e useefect.
+ 
 
 ###`Styles`
 
 Usei Styles module para trabalhar o estilo de cada componente separado, além de haver uma pasta chamada Styles com arquivos genéricos de scss, como reset e global para agrupar tudo em um lugar e não deixar o código solto ou poluído.
+Há também o scss module, onde cada componente recebe um componente de css para estilizar o mesmo, tendo assim maior facilidade para manutenção do códico nos estilos.
