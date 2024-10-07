@@ -137,7 +137,7 @@ export const Page = () => {
 
             <section>
                 <h3>Sugestoes de Cortes</h3>
-                <form>
+                <form onSubmit={handleCorte}>
                     <div className={styles.boxform}>
                     <FormInput 
                     inputName="Tipo" 
@@ -166,7 +166,7 @@ export const Page = () => {
                      onChange={(e) => setCabelosForm({ ...cabelosForm, valor: e.target.value})}
                      />
 
-                    <Button text="Cadastrar" type="submit" onClick={handleCorte}/>
+                    <Button text="Cadastrar" type="submit"/>
                 </div>
                 </form>
             </section>
