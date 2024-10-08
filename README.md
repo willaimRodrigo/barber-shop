@@ -28,6 +28,15 @@ No fim temos um Footer com um formulário com campos de nome e email e um botão
 
 Usei Html, Scss (module), Javascript e React.
 Usei DOM, componentes.
+Foi usado Json server para simular uma api
+
+Para iniciar o projeto precisamos dar o npm init para iniciar na máquina que já tem o Node.js instalado (caso contrário, instalar). Instalar o jason server (comando: npm instal -g json-server) e depois rodar o mesmo com o comando: json-server --watch db.json --port 3005, assim ele roda nossa fetch api, que simula o back end com os dados e onde armazenará os dados novos, pasta db.json.
+
+As demais dependecias da aplicação será instalada com o comando npm isntall.
+
+Subi a aplicação pela Vercell, plataforma de teste e atualizo pela mesma com comando no terminal vercell --prod.
+
+
 
 
 ### `Javascript`
@@ -41,6 +50,8 @@ HEader e Footer foram incorpados no arquivo App.js, usando a funcionalidade do R
 `useState`: constantes armazando os valores para manipulação das barbas e cortes, como `setCorteSelect` ,`steBArbaSelect` e `setTotal`, para manipulação nas funções.
 
 `addItem`: A função manipula os array e adiociona os valores quando o clique for acionado. Essa função vem com 3 parametros, `tipo`, `valor` e `categoria`. Dentro dessa função temos duas sessões de condicionais, ambas com as mesmas funções, verifica se a categoria é igual ao corte ou barba (puxando de um ou outro objeto) e aciona a condicional. A primeira verificação identifica se já há item selecionado, se sim, ele subtrai o valor existente e volta para null, a segunda condicional verifica se está null, se estiver, adiona o item e soma o valor ao valor anterior com o setCorteSelect/setBarbaSelect(tipo, valor), (que vem null default).
+
+`removeItem`: Fiz a função para remover cards quando clicado o botão, ele remove o card e devolve a lista com os demais renderizados.
 
 `useEffect`: Temos o useEffect apenas para trabalhar o desconto, ele chama a condicional, verificando se o setCorteSelect e o setBarbaSelect são diferentes de null, se sim, armazana o valor em uma constante e abaixo aplica o setTotal com a constante - o desconto, exibindo o total.
 
@@ -61,6 +72,8 @@ Na parte final de prices temos uma sessão com h3 e p apenas renderizando os nom
 `prices` componente que usa o parametro children, para ser renderizado no page quando chamado e utilizando como filhos o que for passado dr=entro de seu escopo, reutilizavel 
 
 `page` componente principal, onde recebe os componentes de listcortes, prices, alem da section de promoção. No escopo, antes do retorno, foi criado a fnção additem, usando usestate e useefect.
+
+`db.json` um novo arquivo que recebe dados com extensão .json que simula uma api, seu formato é diferente dos demais, pois, até os parametros passados estão entre aspas, para ser menor emais leve de transitar os dados.
  
 
 ###`Styles`
