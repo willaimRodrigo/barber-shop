@@ -10,6 +10,7 @@ export const Header = () => {
                 </div>
                  
                 <p>Seja bem vindo!</p>
+                
             </section>
             
         </>

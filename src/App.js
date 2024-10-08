@@ -4,6 +4,7 @@ import { Page } from "./components/Page";
 import "./components/styles/index.scss";
 
 function App() {
+  
   return (
     <>
       <Header />

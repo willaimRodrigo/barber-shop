@@ -31,5 +31,43 @@
             font-size: 1.25rem;
             color: rgb(94, 54, 5);
         }
-    }    
+    } 
+    
+    .inputcorte {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        width: 80%;
+
+        border: 2px solid black;
+        border-radius: 10px;
+
+        height: 150px;
+
+        .form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .sectionform {
+            display: flex;
+            justify-content: space-evenly;
+            width: 300px;
+        }
+
+        label {
+            width: 200px;
+        }
+
+        .boxForm {
+            display: flex;
+            align-items: center;
+
+            width: 100%;
+        }
+    }
 }
